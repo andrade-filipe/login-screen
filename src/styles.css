@@ -5,9 +5,12 @@
 COLORS
 ------------------*/
 
-  --clr-primary: hsl(218, 24%, 9%);
-  --clr-accent: hsl(140, 10%, 94%);
-  --clr-complement: hsl(207, 90%, 25%);
+  --clr-primary: hsl(261, 100%, 27%);
+  --clr-primary-light: hsl(261, 100%, 40%);
+  --clr-flat-black: hsl(0, 0%, 13%);
+  --clr-flat-white: hsl(0, 0%, 96%);
+  --clr-flat-white-opacity: hsla(0, 0%, 96%, 0.76);
+  --clr-error: hsl(351, 100%, 35%);
 
   /*-----------------
 FONTS
@@ -68,6 +71,12 @@ font size standards
   --button-margin: 0.3rem;
 }
 
+/* UTILITY */
+.dark {
+  background-color: var(--clr-primary);
+}
+
+/* LOGIN */
 
 .login-container{
   padding: 0;
@@ -78,21 +87,43 @@ font size standards
   padding: 10rem 0;
 }
 
+/* FORM */
+
 .form-control:first-of-type{
-  margin-bottom: 1rem;
-  padding: 0.5rem;
+  margin-bottom: 1.25rem;
+  padding: 0.5rem 1rem;
 
   font-weight: 600;
 
-  border-color: gray;
-  color: whitesmoke;
+  border-color: var(--clr-flat-white-opacity);
+  border-width: 2px;
+  border-radius: 0.5rem;
+
+  color: var(--clr-flat-white);
   background-color: transparent;
 }
 
-.form_button:first-of-type {
-  margin-right: 1.5rem;
+.form-control::placeholder {
+  color: var(--clr-flat-white-opacity);
 }
 
-.dark {
-  background-color: darkgray;
+.form_button:first-of-type {
+  margin-right: 1.25rem;
+}
+
+/* BUTTON */
+
+.btn {
+  font-weight: 700;
+  font-size: var(--fs-small);
+}
+
+.btn-outline-success, .btn-outline-secondary {
+  min-width: 6rem;
+  border-width: 2px;
+}
+
+.btn-outline-secondary {
+  border-color: var(--clr-flat-white-opacity);
+  color: var(--clr-flat-white-opacity);
 }
