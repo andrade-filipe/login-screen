@@ -1,1 +1,98 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+:root {
+  /*-----------------
+COLORS
+------------------*/
+
+  --clr-primary: hsl(218, 24%, 9%);
+  --clr-accent: hsl(140, 10%, 94%);
+  --clr-complement: hsl(207, 90%, 25%);
+
+  /*-----------------
+FONTS
+------------------*/
+
+  --ff-primary: "Poiret One", cursive;
+  --ff-secondary: "Montserrat", sans-serif;
+
+  /* Font Weight */
+
+  --fw-thin: 200;
+  --fw-regular: 400;
+  --fw-semi-bold: 600;
+  --fw-bold: 800;
+
+  /* Font Size*/
+
+  --fs-xsmall: 0.875rem; /*14 px*/
+  --fs-small: 1rem; /*16 px*/
+  --fs-normal: 1.175rem; /*18 px*/
+  --fs-medium: 1.3125rem; /*21 px*/
+  --fs-medium-large: 1.5rem; /* 24px */
+  --fs-mobile-large: 1.75rem; /*28px*/
+  --fs-large: 2rem; /*32 px*/
+  --fs-mobile-xlarge: 2.25rem; /*35px*/
+  --fs-xlarge: 2.625rem; /*42 px*/
+  --fs-biggerscreen: 3.2rem; /*51 px*/
+
+  /*----------------
+SPACING
+------------------*/
+
+  --sz-400: 1rem;
+  --sz-500: 1.5rem;
+  --sz-600: 2rem;
+  --sz-700: 3rem;
+  --sz-800: 4rem;
+  --sz-900: 5rem;
+  --sz-1000: 7rem;
+
+  /*-----------------
+font size standards
+------------------*/
+
+  /*font standard (mobile first)*/
+  --fs-h1: var(--fs-xlarge);
+  --fs-h2: var(--fs-mobile-xlarge);
+  --fs-h3: var(--fs-mobile-large);
+  --fs-h4: var(--fs-medium-large);
+  --fs-standard: var(--fs-normal);
+
+  /*Spacing standards on the page*/
+
+  --standard-margin: var(--sz-800);
+  --standard-padding: var(--sz-600);
+  --standard-border: var(--sz-900);
+  --button-padding: var(--sz-500);
+  --button-margin: 0.3rem;
+}
+
+
+.login-container{
+  padding: 0;
+  margin-top: 5rem;
+}
+
+.login-form {
+  padding: 10rem 0;
+}
+
+.form-control:first-of-type{
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+
+  font-weight: 600;
+
+  border-color: gray;
+  color: whitesmoke;
+  background-color: transparent;
+}
+
+.form_button:first-of-type {
+  margin-right: 1.5rem;
+}
+
+.dark {
+  background-color: darkgray;
+}
