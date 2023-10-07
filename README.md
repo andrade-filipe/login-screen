@@ -5,7 +5,7 @@
 
 ## Features
 
-<p>On the front-end will be implemented:</p>
+<span>On the front-end will be implemented:</span>
 <p>A Login Service to communicate with the API 🔴</p>
 <p>A Login Form Component so the user can interact 🔴</p>
 <p>A Component to show OAuth2 Options 🔴</p>
