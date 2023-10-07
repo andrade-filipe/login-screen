@@ -3,9 +3,8 @@
 <p>This is the Front-end for a Login Screen Simple Project, the back-end you can find in:</p>
 <p>The Objective is implement a Angular app that communicates with my API</p>
 
-## Features
+## will be implemented
 
-<span>On the front-end will be implemented:</span>
 <p>A Login Service to communicate with the API 🔴</p>
 <p>A Login Form Component so the user can interact 🔴</p>
 <p>A Component to show OAuth2 Options 🔴</p>
