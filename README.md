@@ -1,7 +1,6 @@
-# LoginScreen
+# LoginScreen [![My Skills](https://skillicons.dev/icons?i=angular)](https://skillicons.dev)
 <p>This is the Front-end for a Login Screen Simple Project, the back-end you can find in:</p>
 <p>The Objective is implement a Angular app that communicates with my API</p>
-<img width=40 src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-plain.svg" />
 
 ## Features
 
