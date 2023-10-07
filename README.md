@@ -1,9 +1,8 @@
 # LoginScreen
 <p>This is the Front-end for a Login Screen Simple Project, the back-end you can find in:</p>
 <p>The Objective is implement a Angular & Spring login feature using Spring Security</p>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-          
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-plain.svg" />
 
 ## Features
 
