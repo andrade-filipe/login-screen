@@ -47,8 +47,25 @@
       </div>
     </div>
     <!-- Aniversário -->
+    <mat-form-field>
+      <mat-label>Verbose datepicker</mat-label>
+      <input matInput [matDatepicker]="dp" [formControl]="birth">
+      <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+      <mat-datepicker #dp></mat-datepicker>
+    </mat-form-field>
 
     <!-- Gênero -->
+    <mat-form-field>
+      <mat-label>Gender</mat-label>
+      <mat-select>
+        <mat-option
+        id="gender"
+        *ngFor="let gender of genders"
+        [value]="gender.value">
+          {{ gender.text }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
     <!-- PassWord -->
     <div

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormControlName } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/service/login/login.service';
 
 @Component({
@@ -14,6 +14,8 @@ export class RegisterFormComponent {
     { text: "Other", value: 3 },
   ];
 
+  public birth = new FormControl(new Date(), Validators.required);
+
   constructor(loginService: LoginService) {
   }
 
@@ -21,11 +23,9 @@ export class RegisterFormComponent {
     name: new FormControl('', Validators.required),
     username: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
-    birth: new FormControl(Date, Validators.required),
     gender: new FormControl(), //combobox in the HTML
     password: new FormControl('', Validators.required),
     confirmPassword: new FormControl('', Validators.required),
-
   });
 
   onSubmit() {
