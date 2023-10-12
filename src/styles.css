@@ -80,7 +80,7 @@ font size standards
 
 .login-container{
   padding: 0;
-  margin-top: 5rem;
+  margin-top: var(--sz-900);
 }
 
 .login-form {
@@ -93,7 +93,7 @@ font size standards
   margin-bottom: 1.25rem;
   padding: 0.5rem 1rem;
 
-  font-weight: 600;
+  font-weight: var(--fw-semi-bold);
 
   border-color: var(--clr-flat-white-opacity);
   border-width: 2px;
