@@ -1,0 +1,91 @@
+<div class="register-container | container">
+  <form
+    class="register-form | text-center"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+  >
+    <!-- Name -->
+    <div
+      class="register-form_name | row justify-content-center align-items-center"
+    >
+      <div class="col-lg-4 col-6">
+        <input
+          id="name"
+          class="form-control"
+          type="text"
+          formControlName="name"
+          placeholder="Name*"
+        />
+      </div>
+    </div>
+    <!-- Username -->
+    <div
+      class="register-form_username | row justify-content-center align-items-center"
+    >
+      <div class="col-lg-4 col-6">
+        <input
+          id="username"
+          class="form-control"
+          type="text"
+          formControlName="username"
+          placeholder="Username*"
+        />
+      </div>
+    </div>
+    <!-- Email -->
+    <div
+      class="register-form_email| row justify-content-center align-items-center"
+    >
+      <div class="col-lg-4 col-6">
+        <input
+          id="email"
+          class="form-control"
+          type="text"
+          formControlName="email"
+          placeholder="Email*"
+        />
+      </div>
+    </div>
+    <!-- Aniversário -->
+
+    <!-- Gênero -->
+
+    <!-- PassWord -->
+    <div
+      class="register-form_password | row justify-content-center align-items-center"
+    >
+      <div class="col-lg-4 col-6">
+        <input
+          id="password"
+          class="form-control"
+          type="password"
+          formControlName="password"
+          placeholder="Password*"
+        />
+      </div>
+    </div>
+    <!-- ConfirmPassWord -->
+    <div
+      class="register-form_confirm-password | row justify-content-center align-items-center"
+    >
+      <div class="col-lg-4 col-6">
+        <input
+          id="confirmPassword"
+          class="form-control"
+          type="password"
+          formControlName="confirmPassword"
+          placeholder="Confirm Password*"
+        />
+      </div>
+    </div>
+    <!-- Button -->
+    <button
+      type="submit"
+      class="form_button | btn btn-outline-success"
+      [disabled]="!form.valid"
+      routerLink="/login"
+    >
+      Submit
+    </button>
+  </form>
+</div>

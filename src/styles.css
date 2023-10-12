@@ -127,3 +127,6 @@ font size standards
   border-color: var(--clr-flat-white-opacity);
   color: var(--clr-flat-white-opacity);
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

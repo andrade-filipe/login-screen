@@ -21,4 +21,8 @@ export class LoginFormComponent {
   onSubmit() {
     console.warn(this.form.value);
   }
+
+  register() {
+    
+  }
 }
