@@ -23,7 +23,6 @@ export class RegisterFormComponent {
     name: new FormControl('', Validators.required),
     username: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
-    gender: new FormControl(), //combobox in the HTML
     password: new FormControl('', Validators.required),
     confirmPassword: new FormControl('', Validators.required),
   });
