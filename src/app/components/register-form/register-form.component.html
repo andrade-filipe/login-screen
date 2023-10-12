@@ -34,7 +34,7 @@
     </div>
     <!-- Email -->
     <div
-      class="register-form_email| row justify-content-center align-items-center"
+      class="register-form_email | row justify-content-center align-items-center"
     >
       <div class="col-lg-4 col-6">
         <input
@@ -46,27 +46,29 @@
         />
       </div>
     </div>
-    <!-- Aniversário -->
-    <mat-form-field>
-      <mat-label>Verbose datepicker</mat-label>
-      <input matInput [matDatepicker]="dp" [formControl]="birth">
-      <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
-      <mat-datepicker #dp></mat-datepicker>
-    </mat-form-field>
+    <div class="row justify-content-center align-items-center">
+      <!-- Aniversário -->
+      <mat-form-field class="col-3 |  register-form_datepicker">
+        <mat-label>Birthday</mat-label>
+        <input matInput [matDatepicker]="dp" [formControl]="birth" />
+        <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp></mat-datepicker>
+      </mat-form-field>
 
-    <!-- Gênero -->
-    <mat-form-field>
-      <mat-label>Gender</mat-label>
-      <mat-select>
-        <mat-option
-        id="gender"
-        *ngFor="let gender of genders"
-        [value]="gender.value">
-          {{ gender.text }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
+      <!-- Gênero -->
+      <mat-form-field class="col-3 | register-form_gender">
+        <mat-label>Gender</mat-label>
+        <mat-select>
+          <mat-option
+            id="gender"
+            *ngFor="let gender of genders"
+            [value]="gender.value"
+          >
+            {{ gender.text }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
     <!-- PassWord -->
     <div
       class="register-form_password | row justify-content-center align-items-center"
