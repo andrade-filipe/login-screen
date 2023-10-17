@@ -1,7 +1,7 @@
 <div class="register-container | container">
   <form
     class="register-form | text-center"
-    [formGroup]="form"
+    [formGroup]="registerForm"
     (ngSubmit)="onSubmit()"
   >
     <!-- Name -->
@@ -48,13 +48,14 @@
     </div>
     <div class="row justify-content-center align-items-center">
       <!-- Birthday -->
-      <mat-form-field class="col-3 |  register-form_datepicker">
+      <mat-form-field class="col-3 | register-form_datepicker">
         <mat-label>Birthday</mat-label>
-        <input matInput [matDatepicker]="dp" [formControl]="birth" />
+        <input matInput [matDatepicker]="dp" [formControl]="birth" placeholder="Month/Day/Year"/>
         <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
         <mat-datepicker #dp></mat-datepicker>
       </mat-form-field>
-
+    </div>
+    <div class="row justify-content-center align-items-center">
       <!-- Gender -->
       <mat-form-field class="col-3 | register-form_gender">
         <mat-label>Gender</mat-label>
@@ -101,7 +102,7 @@
     <button
       type="submit"
       class="form_button | btn btn-outline-success"
-      [disabled]="!form.valid"
+      [disabled]="!registerForm.valid"
       routerLink="/login"
     >
       Submit

@@ -19,7 +19,7 @@ export class RegisterFormComponent {
   constructor(loginService: LoginService) {
   }
 
-  form = new FormGroup({
+  registerForm = new FormGroup({
     name: new FormControl('', Validators.required),
     username: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
@@ -28,6 +28,6 @@ export class RegisterFormComponent {
   });
 
   onSubmit() {
-    console.warn(this.form.value);
+    console.warn(this.registerForm.value);
   }
 }

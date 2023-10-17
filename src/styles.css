@@ -80,7 +80,6 @@ font size standards
 
 .login-container{
   padding: 0;
-  margin-top: var(--sz-900);
 }
 
 .login-form {
@@ -126,6 +125,24 @@ font size standards
 .btn-outline-secondary {
   border-color: var(--clr-flat-white-opacity);
   color: var(--clr-flat-white-opacity);
+}
+
+/*Register Component*/
+
+.register-container {
+  padding: 0;
+}
+
+.register-form {
+  padding: 10rem 0;
+}
+
+.register-form_datepicker {
+  width: auto;
+}
+
+.register-form_gender {
+  width: auto;
 }
 
 html, body { height: 100%; }

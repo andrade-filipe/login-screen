@@ -1,7 +1,7 @@
 <div class="login-container | container">
   <form
     class="login-form | text-center"
-    [formGroup]="form"
+    [formGroup]="loginForm"
     (ngSubmit)="onSubmit()"
   >
     <div
@@ -33,7 +33,7 @@
     <button
       type="submit"
       class="form_button | btn btn-outline-success"
-      [disabled]="!form.valid"
+      [disabled]="!loginForm.valid"
     >
       Login
     </button>

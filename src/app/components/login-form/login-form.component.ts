@@ -13,16 +13,15 @@ export class LoginFormComponent {
   constructor(loginService: LoginService) {
   }
 
-  form = new FormGroup({
+  loginForm = new FormGroup({
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
 
   onSubmit() {
-    console.warn(this.form.value);
+    console.warn(this.loginForm.value);
   }
 
   register() {
-    
   }
 }
