@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login/login.service';
 
 @Component({
@@ -16,9 +17,9 @@ export class RegisterFormComponent {
     { text: "Other", value: "OTHER" },
   ];
 
-  public birth = new FormControl(new Date(), Validators.required);
+  public birth = new FormControl(new Date().toUTCString(), Validators.required);
 
-  constructor(loginService: LoginService) {
+  constructor(loginService: LoginService, private router: Router) {
   }
 
   registerForm = new FormGroup({
@@ -33,6 +34,7 @@ export class RegisterFormComponent {
 
   onSubmit() {
     this.registerForm.controls.genderSelect.setValue(this.selectedGender);
+    this.router.navigate(['/login']);
     console.log(this.registerForm.value);
   }
 }
