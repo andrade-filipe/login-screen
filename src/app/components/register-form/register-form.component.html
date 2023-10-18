@@ -59,7 +59,7 @@
       <!-- Gender -->
       <mat-form-field class="col-3 | register-form_gender">
         <mat-label>Gender</mat-label>
-        <mat-select>
+        <mat-select [(ngModel)]="selectedGender" [ngModelOptions]="{standalone: true}" name="gender">
           <mat-option
             id="gender"
             *ngFor="let gender of genders"
@@ -103,7 +103,6 @@
       type="submit"
       class="form_button | btn btn-outline-success"
       [disabled]="!registerForm.valid"
-      routerLink="/login"
     >
       Submit
     </button>

@@ -8,10 +8,12 @@ import { LoginService } from 'src/app/service/login/login.service';
   styleUrls: ['./register-form.component.css']
 })
 export class RegisterFormComponent {
-  public genders: Array<{ text: string; value: number }> = [
-    { text: "Male", value: 1 },
-    { text: "Female", value: 2 },
-    { text: "Other", value: 3 },
+  selectedGender !: string;
+
+  public genders: Array<{ text: string; value: string }> = [
+    { text: "Male", value: "MALE" },
+    { text: "Female", value: "FEMALE" },
+    { text: "Other", value: "OTHER" },
   ];
 
   public birth = new FormControl(new Date(), Validators.required);
@@ -23,11 +25,14 @@ export class RegisterFormComponent {
     name: new FormControl('', Validators.required),
     username: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
+    genderSelect: new FormControl(),
+    birthday: this.birth,
     password: new FormControl('', Validators.required),
     confirmPassword: new FormControl('', Validators.required),
   });
 
   onSubmit() {
-    console.warn(this.registerForm.value);
+    this.registerForm.controls.genderSelect.setValue(this.selectedGender);
+    console.log(this.registerForm.value);
   }
 }
