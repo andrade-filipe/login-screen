@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { APP_CONFIG, APP_SERVICE_CONFIG } from './app-config/app-config.service';
 
 @NgModule({
   declarations: [AppComponent, LoginFormComponent, RegisterFormComponent],
@@ -31,7 +32,12 @@ import { MatSelectModule } from '@angular/material/select';
     ReactiveFormsModule,
     MatSelectModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_SERVICE_CONFIG,
+      useValue: APP_CONFIG,
+  },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
