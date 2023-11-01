@@ -6,8 +6,8 @@
 ## will be implemented
 
 <p>A Login Service to communicate with the API 🔴</p>
-<p>A Login Form Component so the user can interact 🔴</p>
+<p>A Login Form Component so the user can interact ✔️</p>
 <p>A Component to show OAuth2 Options 🔴</p>
-<p>A Register Form so the user can create an Account 🔴</p>
+<p>A Register Form so the user can create an Account ✔️</p>
 <p>Token Authentication 🔴</p>
 <p>Form Verification 🔴</p>
