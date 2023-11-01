@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Gender } from 'src/app/enums/gender';
 import { LoginService } from 'src/app/service/login/login.service';
 
 @Component({
@@ -11,10 +12,10 @@ import { LoginService } from 'src/app/service/login/login.service';
 export class RegisterFormComponent {
   selectedGender !: string;
 
-  public genders: Array<{ text: string; value: string }> = [
-    { text: "Male", value: "MALE" },
-    { text: "Female", value: "FEMALE" },
-    { text: "Other", value: "OTHER" },
+  public genders: Array<{ text: string; value: Gender }> = [
+    { text: "Male", value: Gender.MALE },
+    { text: "Female", value: Gender.FEMALE },
+    { text: "Other", value: Gender.OTHER },
   ];
 
   public birth = new FormControl(new Date().toUTCString(), Validators.required);
