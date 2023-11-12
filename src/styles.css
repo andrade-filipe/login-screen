@@ -6,7 +6,7 @@ COLORS
 ------------------*/
 
     --clr-primary: hsl(261, 100%, 27%);
-    --clr-primary-light: hsl(261, 100%, 40%);
+    --clr-primary-light: hsl(266, 100%, 40%);
     --clr-flat-black: hsl(0, 0%, 13%);
     --clr-flat-white: hsl(0, 0%, 96%);
     --clr-flat-white-opacity: hsla(0, 0%, 96%, 0.76);
@@ -16,7 +16,7 @@ COLORS
 FONTS
 ------------------*/
 
-    --ff-primary: "Poiret One", cursive;
+    --ff-primary: 'Onest', sans-serif;
     --ff-secondary: "Montserrat", sans-serif;
 
     /* Font Weight */
@@ -73,7 +73,8 @@ font size standards
 
 /* UTILITY */
 .dark {
-    background-color: var(--clr-primary);
+    background: var(--clr-primary);
+    background: linear-gradient(180deg, rgba(48,0,138,1) 0%, rgb(68, 13, 141) 75%);
 }
 
 /* LOGIN */
@@ -152,5 +153,5 @@ body {
 }
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: 'Onest', sans-serif;
 }
