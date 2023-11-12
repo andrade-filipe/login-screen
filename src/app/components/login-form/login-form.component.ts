@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from 'src/app/service/login/login.service';
+import { ApiService } from 'src/app/service/login/api-request.service';
 
 @Component({
     selector: 'app-login-form',
@@ -8,7 +8,7 @@ import { LoginService } from 'src/app/service/login/login.service';
     styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent {
-    constructor(loginService: LoginService) {}
+    constructor(apiService: ApiService) {}
 
     loginForm = new FormGroup({
         username: new FormControl('', Validators.required),

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Gender } from 'src/app/enums/gender';
-import { LoginService } from 'src/app/service/login/login.service';
+import { ApiService } from 'src/app/service/login/api-request.service';
 
 @Component({
     selector: 'app-register-form',
@@ -20,7 +20,7 @@ export class RegisterFormComponent {
 
     public birth = new FormControl(new Date().toUTCString(), Validators.required);
 
-    constructor(loginService: LoginService, private router: Router) {}
+    constructor(apiService: ApiService, private router: Router) {}
 
     registerForm = new FormGroup({
         name: new FormControl('', Validators.required),
