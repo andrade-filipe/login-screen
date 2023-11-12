@@ -4,10 +4,10 @@ import { AppConfig } from 'src/app/app-config/app-config.interface';
 import { APP_SERVICE_CONFIG } from 'src/app/app-config/app-config.service';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class LoginService {
-  readonly API_URL: string = `${this.config.apiUrl}/api/v1`;
+    readonly API_URL: string = `${this.config.apiUrl}/api/v1`;
 
     httpOptions = {
         headers: new HttpHeaders({
@@ -15,7 +15,5 @@ export class LoginService {
         }),
     };
 
-  constructor(
-    private http: HttpClient,
-    @Inject(APP_SERVICE_CONFIG) private config: AppConfig) {}
+    constructor(private http: HttpClient, @Inject(APP_SERVICE_CONFIG) private config: AppConfig) {}
 }

@@ -17,27 +17,27 @@ import { MatSelectModule } from '@angular/material/select';
 import { APP_CONFIG, APP_SERVICE_CONFIG } from './app-config/app-config.service';
 
 @NgModule({
-  declarations: [AppComponent, LoginFormComponent, RegisterFormComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatSelectModule
-  ],
-  providers: [
-    {
-      provide: APP_SERVICE_CONFIG,
-      useValue: APP_CONFIG,
-  },
-  ],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent, LoginFormComponent, RegisterFormComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatSelectModule,
+    ],
+    providers: [
+        {
+            provide: APP_SERVICE_CONFIG,
+            useValue: APP_CONFIG,
+        },
+    ],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

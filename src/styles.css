@@ -1,149 +1,156 @@
 @import "~../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 :root {
-  /*-----------------
+    /*-----------------
 COLORS
 ------------------*/
 
-  --clr-primary: hsl(261, 100%, 27%);
-  --clr-primary-light: hsl(261, 100%, 40%);
-  --clr-flat-black: hsl(0, 0%, 13%);
-  --clr-flat-white: hsl(0, 0%, 96%);
-  --clr-flat-white-opacity: hsla(0, 0%, 96%, 0.76);
-  --clr-error: hsl(351, 100%, 35%);
+    --clr-primary: hsl(261, 100%, 27%);
+    --clr-primary-light: hsl(261, 100%, 40%);
+    --clr-flat-black: hsl(0, 0%, 13%);
+    --clr-flat-white: hsl(0, 0%, 96%);
+    --clr-flat-white-opacity: hsla(0, 0%, 96%, 0.76);
+    --clr-error: hsl(351, 100%, 35%);
 
-  /*-----------------
+    /*-----------------
 FONTS
 ------------------*/
 
-  --ff-primary: "Poiret One", cursive;
-  --ff-secondary: "Montserrat", sans-serif;
+    --ff-primary: "Poiret One", cursive;
+    --ff-secondary: "Montserrat", sans-serif;
 
-  /* Font Weight */
+    /* Font Weight */
 
-  --fw-thin: 200;
-  --fw-regular: 400;
-  --fw-semi-bold: 600;
-  --fw-bold: 800;
+    --fw-thin: 200;
+    --fw-regular: 400;
+    --fw-semi-bold: 600;
+    --fw-bold: 800;
 
-  /* Font Size*/
+    /* Font Size*/
 
-  --fs-xsmall: 0.875rem; /*14 px*/
-  --fs-small: 1rem; /*16 px*/
-  --fs-normal: 1.175rem; /*18 px*/
-  --fs-medium: 1.3125rem; /*21 px*/
-  --fs-medium-large: 1.5rem; /* 24px */
-  --fs-mobile-large: 1.75rem; /*28px*/
-  --fs-large: 2rem; /*32 px*/
-  --fs-mobile-xlarge: 2.25rem; /*35px*/
-  --fs-xlarge: 2.625rem; /*42 px*/
-  --fs-biggerscreen: 3.2rem; /*51 px*/
+    --fs-xsmall: 0.875rem; /*14 px*/
+    --fs-small: 1rem; /*16 px*/
+    --fs-normal: 1.175rem; /*18 px*/
+    --fs-medium: 1.3125rem; /*21 px*/
+    --fs-medium-large: 1.5rem; /* 24px */
+    --fs-mobile-large: 1.75rem; /*28px*/
+    --fs-large: 2rem; /*32 px*/
+    --fs-mobile-xlarge: 2.25rem; /*35px*/
+    --fs-xlarge: 2.625rem; /*42 px*/
+    --fs-biggerscreen: 3.2rem; /*51 px*/
 
-  /*----------------
+    /*----------------
 SPACING
 ------------------*/
 
-  --sz-400: 1rem;
-  --sz-500: 1.5rem;
-  --sz-600: 2rem;
-  --sz-700: 3rem;
-  --sz-800: 4rem;
-  --sz-900: 5rem;
-  --sz-1000: 7rem;
+    --sz-400: 1rem;
+    --sz-500: 1.5rem;
+    --sz-600: 2rem;
+    --sz-700: 3rem;
+    --sz-800: 4rem;
+    --sz-900: 5rem;
+    --sz-1000: 7rem;
 
-  /*-----------------
+    /*-----------------
 font size standards
 ------------------*/
 
-  /*font standard (mobile first)*/
-  --fs-h1: var(--fs-xlarge);
-  --fs-h2: var(--fs-mobile-xlarge);
-  --fs-h3: var(--fs-mobile-large);
-  --fs-h4: var(--fs-medium-large);
-  --fs-standard: var(--fs-normal);
+    /*font standard (mobile first)*/
+    --fs-h1: var(--fs-xlarge);
+    --fs-h2: var(--fs-mobile-xlarge);
+    --fs-h3: var(--fs-mobile-large);
+    --fs-h4: var(--fs-medium-large);
+    --fs-standard: var(--fs-normal);
 
-  /*Spacing standards on the page*/
+    /*Spacing standards on the page*/
 
-  --standard-margin: var(--sz-800);
-  --standard-padding: var(--sz-600);
-  --standard-border: var(--sz-900);
-  --button-padding: var(--sz-500);
-  --button-margin: 0.3rem;
+    --standard-margin: var(--sz-800);
+    --standard-padding: var(--sz-600);
+    --standard-border: var(--sz-900);
+    --button-padding: var(--sz-500);
+    --button-margin: 0.3rem;
 }
 
 /* UTILITY */
 .dark {
-  background-color: var(--clr-primary);
+    background-color: var(--clr-primary);
 }
 
 /* LOGIN */
 
-.login-container{
-  padding: 0;
+.login-container {
+    padding: 0;
 }
 
 .login-form {
-  padding: 10rem 0;
+    padding: 10rem 0;
 }
 
 /* FORM */
 
-.form-control:first-of-type{
-  margin-bottom: 1.25rem;
-  padding: 0.5rem 1rem;
+.form-control:first-of-type {
+    margin-bottom: 1.25rem;
+    padding: 0.5rem 1rem;
 
-  font-weight: var(--fw-semi-bold);
+    font-weight: var(--fw-semi-bold);
 
-  border-color: var(--clr-flat-white-opacity);
-  border-width: 2px;
-  border-radius: 0.5rem;
+    border-color: var(--clr-flat-white-opacity);
+    border-width: 2px;
+    border-radius: 0.5rem;
 
-  color: var(--clr-flat-white);
-  background-color: transparent;
+    color: var(--clr-flat-white);
+    background-color: transparent;
 }
 
 .form-control::placeholder {
-  color: var(--clr-flat-white-opacity);
+    color: var(--clr-flat-white-opacity);
 }
 
 .form_button:first-of-type {
-  margin-right: 1.25rem;
+    margin-right: 1.25rem;
 }
 
 /* BUTTON */
 
 .btn {
-  font-weight: 700;
-  font-size: var(--fs-small);
+    font-weight: 700;
+    font-size: var(--fs-small);
 }
 
-.btn-outline-success, .btn-outline-secondary {
-  min-width: 6rem;
-  border-width: 2px;
+.btn-outline-success,
+.btn-outline-secondary {
+    min-width: 6rem;
+    border-width: 2px;
 }
 
 .btn-outline-secondary {
-  border-color: var(--clr-flat-white-opacity);
-  color: var(--clr-flat-white-opacity);
+    border-color: var(--clr-flat-white-opacity);
+    color: var(--clr-flat-white-opacity);
 }
 
 /*Register Component*/
 
 .register-container {
-  padding: 0;
+    padding: 0;
 }
 
 .register-form {
-  padding: 10rem 0;
+    padding: 10rem 0;
 }
 
 .register-form_datepicker {
-  width: auto;
+    width: auto;
 }
 
 .register-form_gender {
-  width: auto;
+    width: auto;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

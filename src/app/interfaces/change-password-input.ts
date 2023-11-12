@@ -1,4 +1,4 @@
 export interface ChangePasswordInput {
-  email: string;
-  newPassword: string;
+    email: string;
+    newPassword: string;
 }
