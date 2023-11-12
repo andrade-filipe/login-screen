@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Gender } from 'src/app/enums/gender';
-import { ApiService } from 'src/app/service/login/api-request.service';
+import { ApiService } from 'src/app/service/api/api-request.service';
 
 @Component({
     selector: 'app-register-form',

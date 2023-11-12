@@ -15,7 +15,6 @@ export class UserService {
     }
 
     logout() {
-        // Remove user from local storage and update logged in user
         let emptyUser: User = {};
         localStorage.removeItem('user');
         this.userSubject.next(emptyUser);

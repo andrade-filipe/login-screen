@@ -9,7 +9,7 @@ import { APP_SERVICE_CONFIG } from 'src/app/app-config/app-config.service';
 export class ApiService {
     readonly API_URL: string = `${this.config.apiUrl}/api/v1`;
 
-    token: string = '';
+    token!: string;
 
     httpOptions = {
         headers: new HttpHeaders({

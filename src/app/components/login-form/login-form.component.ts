@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ApiService } from 'src/app/service/login/api-request.service';
+import { ApiService } from 'src/app/service/api/api-request.service';
 
 @Component({
     selector: 'app-login-form',
