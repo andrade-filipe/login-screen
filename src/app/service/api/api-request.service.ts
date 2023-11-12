@@ -15,6 +15,7 @@ export class ApiService {
     token!: string;
 
     httpOptionsAuth = {
+        method: 'GET',
         headers: new HttpHeaders({
             'Content-Type': 'application/json',
             Authorization: `Bearer ${this.token}`,
@@ -22,6 +23,7 @@ export class ApiService {
     };
 
     httpOptions = {
+        method: 'POST',
         headers: new HttpHeaders({
             'Content-Type': 'application/json',
         }),
@@ -33,7 +35,7 @@ export class ApiService {
         return this.http.post<void>(
             `${this.API_URL}/auth/register`,
             registerThis,
-            this.httpOptionsAuth
+            this.httpOptions
         );
     }
 }
