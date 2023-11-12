@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +15,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { APP_CONFIG, APP_SERVICE_CONFIG } from './app-config/app-config.service';
+import { GlobalHttpErrorHandlerInterceptor } from './interceptors/global-http-error-handler.interceptor';
+import { ErrorHandlerService } from './service/error-handler/error-handler.service';
 
 @NgModule({
     declarations: [AppComponent, LoginFormComponent, RegisterFormComponent],
@@ -36,6 +38,15 @@ import { APP_CONFIG, APP_SERVICE_CONFIG } from './app-config/app-config.service'
         {
             provide: APP_SERVICE_CONFIG,
             useValue: APP_CONFIG,
+        },
+        {
+            provide: ErrorHandler,
+            useClass: ErrorHandlerService,
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: GlobalHttpErrorHandlerInterceptor,
+            multi: true,
         },
     ],
     bootstrap: [AppComponent],

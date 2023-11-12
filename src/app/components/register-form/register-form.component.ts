@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { throwError } from 'rxjs';
 import { Gender } from 'src/app/enums/gender';
+import { RegisterInput } from 'src/app/interfaces/register-input';
 import { ApiService } from 'src/app/service/api/api-request.service';
 
 @Component({
@@ -20,7 +22,7 @@ export class RegisterFormComponent {
 
     public birth = new FormControl(new Date().toUTCString(), Validators.required);
 
-    constructor(apiService: ApiService, private router: Router) {}
+    constructor(private apiService: ApiService, private router: Router) {}
 
     registerForm = new FormGroup({
         name: new FormControl('', Validators.required),
@@ -33,8 +35,42 @@ export class RegisterFormComponent {
     });
 
     onSubmit() {
-        this.registerForm.controls.genderSelect.setValue(this.selectedGender);
-        this.router.navigate(['/login']);
-        console.log(this.registerForm.value);
+        const password = this.registerForm.value.password;
+        const confirmationPassword = this.registerForm.value.confirmPassword;
+
+        if (this.confirmPassword(password, confirmationPassword)) {
+            this.registerForm.controls.genderSelect.setValue(this.selectedGender);
+            let registerInput: RegisterInput = {
+                name: this.registerForm.value.name?.valueOf(),
+                username: this.registerForm.value.username?.valueOf(),
+                email: this.registerForm.value.email?.valueOf(),
+                password: this.registerForm.value.password?.valueOf(),
+                gender: this.registerForm.value.genderSelect,
+                birthDate: this.registerForm.value.birthday?.valueOf(),
+            };
+            this.registerUser(registerInput);
+        } else {
+            console.error("Couldn't send the register form")
+        }
+    }
+
+    private confirmPassword(
+        password: string | null | undefined,
+        confirmationPassword: string | null | undefined
+    ): boolean {
+        if (
+            ((password == '') == null) == undefined ||
+            ((confirmationPassword == '') == null) == undefined
+        ) {
+            return false;
+        }
+        return password === confirmationPassword;
+    }
+
+    private registerUser(registerInput: RegisterInput){
+        this.apiService.registerUserRequest(registerInput).subscribe({
+            error: (err) => throwError(() => new Error("Couldn't register user")),
+            complete: () => {this.router.navigate(['/login']);}
+        })
     }
 }
