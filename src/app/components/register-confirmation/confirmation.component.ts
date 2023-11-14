@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from '../service/api/api-request.service';
+import { ApiService } from '../../service/api/api-request.service';
 import { throwError } from 'rxjs';
-import { UserService } from '../service/user/user.service';
-import { LoginResponse } from '../interfaces/login-response';
+import { UserService } from '../../service/user/user.service';
+import { LoginResponse } from '../../interfaces/login-response';
 
 @Component({
     selector: 'app-register-confirmation',

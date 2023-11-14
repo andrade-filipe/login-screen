@@ -17,8 +17,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { APP_CONFIG, APP_SERVICE_CONFIG } from './app-config/app-config.service';
 import { GlobalHttpErrorHandlerInterceptor } from './interceptors/global-http-error-handler.interceptor';
 import { ErrorHandlerService } from './service/error-handler/error-handler.service';
-import { HomeComponent } from './home/home.component';
-import { ConfirmationComponent } from './register-confirmation/confirmation.component';
+import { HomeComponent } from './components/home/home.component';
+import { ConfirmationComponent } from './components/register-confirmation/confirmation.component';
 
 @NgModule({
     declarations: [
