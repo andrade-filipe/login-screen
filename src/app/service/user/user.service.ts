@@ -30,7 +30,7 @@ export class UserService {
                             localStorage.setItem('user', JSON.stringify(user));
                             this.userSubject.next(user);
                             resolve(user);
-                            this.router.navigate(['/home']);
+
                         }));
                     }else{
                         reject(new Error("login or password somehow is empty"));
@@ -60,7 +60,10 @@ export class UserService {
     private getUserInformation(username: string, token: string): Promise<User>{
         return new Promise((resolve, reject) => {
             this.apiService.getUserInformation(username, token).subscribe({
-                next: response => resolve(response),
+                next: response => {
+                    resolve(response)
+                    this.router.navigate(['/home']);
+                },
                 error: (_err) => throwError(() => new Error("Couldn't get user information")),
             });
         })
