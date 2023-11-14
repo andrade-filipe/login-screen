@@ -16,7 +16,6 @@ export class ApiService {
 
     private httpOptionsWithToken(token:string){
         return {
-            method: 'GET',
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
@@ -27,7 +26,6 @@ export class ApiService {
 
     private httpOptionsNormal(){
         return {
-            method: 'POST',
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -53,8 +51,13 @@ export class ApiService {
         )
     }
 
+    confirmUserEmail(username: string): Observable<LoginResponse>{
+        let url = `${this.API_URL}/auth/register/confirm?username=${username}`;
+        return this.http.get<LoginResponse>(url, this.httpOptionsNormal());
+    }
+
     getUserInformation(username: string, token: string): Observable<User> {
-        let url = `${this.API_URL}/home/information?username=${username}`
+        let url = `${this.API_URL}/home/information?username=${username}`;
         return this.http.get<User>(url, this.httpOptionsWithToken(token));
     }
 }

@@ -20,17 +20,16 @@ export class UserService {
 
     login(loginInput: LoginInput) {
         return new Promise((resolve, reject) => {
-            this.loginRequest(loginInput).then((userLogged => {
+            this.loginRequestPromise(loginInput).then((userLogged => {
                 if (this.checkIfLoginEmpty(userLogged)){
                     let userLoggedLogin = userLogged.username?.valueOf() as string;
                     let userLoggedToken = userLogged.token?.valueOf() as string;
                     if (this.checkIfUndefined(userLoggedLogin) && this.checkIfUndefined(userLoggedToken)){
-                        this.getUserInformation(userLoggedLogin, userLoggedToken).then((user => {
+                        this.getUserInformationPromise(userLoggedLogin, userLoggedToken).then((user => {
                             user.token = userLoggedToken;
                             localStorage.setItem('user', JSON.stringify(user));
                             this.userSubject.next(user);
                             resolve(user);
-
                         }));
                     }else{
                         reject(new Error("login or password somehow is empty"));
@@ -42,13 +41,24 @@ export class UserService {
         });
     }
 
+    autoLogin(username: string, token: string) {
+        return new Promise((resolve, reject) => {
+            this.getUserInformationPromise(username, token).then((user => {
+                user.token = token;
+                localStorage.setItem('user', JSON.stringify(user));
+                this.userSubject.next(user);
+                resolve(user);
+            }));
+        });
+    }
+
     logout() {
         let emptyUser: User = {};
         localStorage.removeItem('user');
         this.userSubject.next(emptyUser);
     }
 
-    private loginRequest(loginInput: LoginInput): Promise<LoginResponse>{
+    private loginRequestPromise(loginInput: LoginInput): Promise<LoginResponse>{
         return new Promise((resolve, reject) => {
             this.apiService.loginUserRequest(loginInput).subscribe({
                 next: response => resolve(response),
@@ -57,14 +67,14 @@ export class UserService {
         });
     }
 
-    private getUserInformation(username: string, token: string): Promise<User>{
+    private getUserInformationPromise(username: string, token: string): Promise<User>{
         return new Promise((resolve, reject) => {
             this.apiService.getUserInformation(username, token).subscribe({
                 next: response => {
                     resolve(response)
                     this.router.navigate(['/home']);
                 },
-                error: (_err) => throwError(() => new Error("Couldn't get user information")),
+                error: (_err) => reject(new Error("Couldn't get user information"))
             });
         })
     }
