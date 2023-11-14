@@ -21,7 +21,13 @@ import { HomeComponent } from './home/home.component';
 import { ConfirmationComponent } from './register-confirmation/confirmation.component';
 
 @NgModule({
-    declarations: [AppComponent, LoginFormComponent, RegisterFormComponent, HomeComponent, ConfirmationComponent],
+    declarations: [
+        AppComponent,
+        LoginFormComponent,
+        RegisterFormComponent,
+        HomeComponent,
+        ConfirmationComponent,
+    ],
     imports: [
         BrowserModule,
         AppRoutingModule,

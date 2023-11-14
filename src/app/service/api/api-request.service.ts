@@ -14,23 +14,23 @@ import { User } from 'src/app/interfaces/user';
 export class ApiService {
     readonly API_URL: string = `${this.config.apiUrl}/api/v1`;
 
-    private httpOptionsWithToken(token:string){
+    private httpOptionsWithToken(token: string) {
         return {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${token}`,
-            })
-        }
+                Accept: 'application/json',
+                Authorization: `Bearer ${token}`,
+            }),
+        };
     }
 
-    private httpOptionsNormal(){
+    private httpOptionsNormal() {
         return {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            })
-        }
+                Accept: 'application/json',
+            }),
+        };
     }
 
     constructor(private http: HttpClient, @Inject(APP_SERVICE_CONFIG) private config: AppConfig) {}
@@ -48,10 +48,10 @@ export class ApiService {
             `${this.API_URL}/auth/login`,
             loginInput,
             this.httpOptionsNormal()
-        )
+        );
     }
 
-    confirmUserEmail(username: string): Observable<LoginResponse>{
+    confirmUserEmail(username: string): Observable<LoginResponse> {
         let url = `${this.API_URL}/auth/register/confirm?username=${username}`;
         return this.http.get<LoginResponse>(url, this.httpOptionsNormal());
     }

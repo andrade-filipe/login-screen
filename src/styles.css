@@ -16,7 +16,7 @@ COLORS
 FONTS
 ------------------*/
 
-    --ff-primary: 'Onest', sans-serif;
+    --ff-primary: "Onest", sans-serif;
     --ff-secondary: "Montserrat", sans-serif;
 
     /* Font Weight */
@@ -74,7 +74,7 @@ font size standards
 /* UTILITY */
 .dark {
     background: var(--clr-primary);
-    background: linear-gradient(180deg, rgba(48,0,138,1) 0%, rgb(68, 13, 141) 75%);
+    background: linear-gradient(180deg, rgba(48, 0, 138, 1) 0%, rgb(68, 13, 141) 75%);
 }
 
 /* LOGIN */
@@ -153,5 +153,5 @@ body {
 }
 body {
     margin: 0;
-    font-family: 'Onest', sans-serif;
+    font-family: "Onest", sans-serif;
 }

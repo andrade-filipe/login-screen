@@ -20,24 +20,29 @@ export class UserService {
 
     login(loginInput: LoginInput) {
         return new Promise((resolve, reject) => {
-            this.loginRequestPromise(loginInput).then((userLogged => {
-                if (this.checkIfLoginEmpty(userLogged)){
+            this.loginRequestPromise(loginInput).then((userLogged) => {
+                if (this.checkIfLoginEmpty(userLogged)) {
                     let userLoggedLogin = userLogged.username?.valueOf() as string;
                     let userLoggedToken = userLogged.token?.valueOf() as string;
-                    if (this.checkIfUndefined(userLoggedLogin) && this.checkIfUndefined(userLoggedToken)){
-                        this.getUserInformationPromise(userLoggedLogin, userLoggedToken).then((user => {
-                            user.token = userLoggedToken;
-                            localStorage.setItem('user', JSON.stringify(user));
-                            this.userSubject.next(user);
-                            resolve(user);
-                        }));
-                    }else{
-                        reject(new Error("login or password somehow is empty"));
+                    if (
+                        this.checkIfUndefined(userLoggedLogin) &&
+                        this.checkIfUndefined(userLoggedToken)
+                    ) {
+                        this.getUserInformationPromise(userLoggedLogin, userLoggedToken).then(
+                            (user) => {
+                                user.token = userLoggedToken;
+                                localStorage.setItem('user', JSON.stringify(user));
+                                this.userSubject.next(user);
+                                resolve(user);
+                            }
+                        );
+                    } else {
+                        reject(new Error('login or password somehow is empty'));
                     }
                 } else {
-                    reject(new Error("Invalid Login"));
+                    reject(new Error('Invalid Login'));
                 }
-            }));
+            });
         });
     }
 
@@ -45,12 +50,12 @@ export class UserService {
         return new Promise((resolve, reject) => {
             let username = confirmedUser.username?.valueOf() as string;
             let token = confirmedUser.token?.valueOf() as string;
-            this.getUserInformationPromise(username, token).then((user => {
+            this.getUserInformationPromise(username, token).then((user) => {
                 user.token = token;
                 localStorage.setItem('user', JSON.stringify(user));
                 this.userSubject.next(user);
                 resolve(user);
-            }));
+            });
         });
     }
 
@@ -60,33 +65,33 @@ export class UserService {
         this.userSubject.next(emptyUser);
     }
 
-    private loginRequestPromise(loginInput: LoginInput): Promise<LoginResponse>{
+    private loginRequestPromise(loginInput: LoginInput): Promise<LoginResponse> {
         return new Promise((resolve, reject) => {
             this.apiService.loginUserRequest(loginInput).subscribe({
-                next: response => resolve(response),
-                error: (_err) => reject(new Error("Invalid login"))
+                next: (response) => resolve(response),
+                error: (_err) => reject(new Error('Invalid login')),
             });
         });
     }
 
-    private getUserInformationPromise(username: string, token: string): Promise<User>{
+    private getUserInformationPromise(username: string, token: string): Promise<User> {
         return new Promise((resolve, reject) => {
             this.apiService.getUserInformation(username, token).subscribe({
-                next: response => {
-                    resolve(response)
+                next: (response) => {
+                    resolve(response);
                     this.router.navigate(['/home']);
                 },
-                error: (_err) => reject(new Error("Couldn't get user information"))
+                error: (_err) => reject(new Error("Couldn't get user information")),
             });
-        })
+        });
     }
 
-    private checkIfLoginEmpty(loginResponse: LoginResponse): boolean{
+    private checkIfLoginEmpty(loginResponse: LoginResponse): boolean {
         let loginEmpty: LoginResponse = {};
         return !(loginResponse === loginEmpty);
     }
 
-    private checkIfUndefined(text: string): boolean{
+    private checkIfUndefined(text: string): boolean {
         return !(text === undefined);
     }
 }
