@@ -1,19 +1,18 @@
 import { ErrorHandler, Injectable, NgZone } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
-export class ErrorHandlerService implements ErrorHandler{
+export class ErrorHandlerService implements ErrorHandler {
+    constructor(private zone: NgZone) {}
 
-    constructor(private zone: NgZone) { }
-
-    handleError(error: unknown){
+    handleError(error: unknown) {
         this.zone.run(() => {
-            if(error instanceof Error){
+            if (error instanceof Error) {
                 console.warn(error);
             } else {
-                console.error("System Failed");
+                console.error('System Failed');
             }
-        })
+        });
     }
 }

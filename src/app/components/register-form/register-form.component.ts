@@ -20,7 +20,7 @@ export class RegisterFormComponent {
         { text: 'Other', value: Gender.OTHER },
     ];
 
-    public birth = new FormControl(new Date().toUTCString(), Validators.required);
+    public birth = new FormControl(new Date(), Validators.required);
 
     constructor(private apiService: ApiService, private router: Router) {}
 
@@ -46,11 +46,11 @@ export class RegisterFormComponent {
                 email: this.registerForm.value.email?.valueOf(),
                 password: this.registerForm.value.password?.valueOf(),
                 gender: this.registerForm.value.genderSelect,
-                birthDate: this.registerForm.value.birthday?.valueOf(),
+                birthDate: this.registerForm.value.birthday,
             };
             this.registerUser(registerInput);
         } else {
-            console.error("Couldn't send the register form")
+            console.error("Couldn't send the register form");
         }
     }
 
@@ -67,10 +67,12 @@ export class RegisterFormComponent {
         return password === confirmationPassword;
     }
 
-    private registerUser(registerInput: RegisterInput){
+    private registerUser(registerInput: RegisterInput) {
         this.apiService.registerUserRequest(registerInput).subscribe({
             error: (err) => throwError(() => new Error("Couldn't register user")),
-            complete: () => {this.router.navigate(['/login']);}
-        })
+            complete: () => {
+                this.router.navigate(['/login']);
+            },
+        });
     }
 }

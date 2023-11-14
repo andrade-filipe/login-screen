@@ -6,5 +6,5 @@ export interface RegisterInput {
     email?: string;
     password?: string;
     gender?: Gender;
-    birthDate?: string;
+    birthDate?: Date | null;
 }

@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from 'src/app/interfaces/user';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class UserService {
     private userSubject: BehaviorSubject<User>;
@@ -26,7 +26,6 @@ export class UserService {
             resolve(user);
         });
     }
-
 
     logout() {
         let emptyUser: User = {};

@@ -1,7 +1,7 @@
-import { Gender } from "../enums/gender";
-import { UserRole } from "../enums/user-role";
+import { Gender } from '../enums/gender';
+import { UserRole } from '../enums/user-role';
 
-export interface User{
+export interface User {
     name?: string;
     username?: string;
     email?: string;
