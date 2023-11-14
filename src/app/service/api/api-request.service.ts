@@ -49,7 +49,7 @@ export class ApiService {
         )
     }
 
-    getUserInformation(username: string | undefined, token: string | undefined): Observable<User> {
+    getUserInformation(username: string, token: string): Observable<User> {
         let url = `${this.API_URL}/home/information?username=${username}`
         this.token = token;
         return this.http.get<User>(url, this.httpOptionsWithToken);

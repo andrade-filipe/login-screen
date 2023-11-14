@@ -1,5 +1,5 @@
 import { Injectable, Optional } from '@angular/core';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, throwError } from 'rxjs';
 import { LoginInput } from 'src/app/interfaces/login-input';
 import { User } from 'src/app/interfaces/user';
 import { ApiService } from '../api/api-request.service';
@@ -20,22 +20,24 @@ export class UserService {
 
     login(loginInput: LoginInput) {
         return new Promise((resolve, reject) => {
-            let userLogged = this.loginRequest(loginInput);
-            if (this.checkIfLoginEmpty(userLogged)){
-                let userLoggedLogin = userLogged.username?.valueOf() as string;
-                let userLoggedToken = userLogged.token?.valueOf() as string;
-                if (this.checkIfUndefined(userLoggedLogin) && this.checkIfUndefined(userLoggedToken)){
-                    let user = this.getUserInformation(userLoggedLogin, userLoggedToken)
-                    user.token = userLoggedToken;
-                    localStorage.setItem('user', JSON.stringify(user));
-                    this.userSubject.next(user);
-                    resolve(user);
-                }else{
-                    throwError(() => new Error("login or password somehow is empty"))
+            this.loginRequest(loginInput).then((userLogged => {
+                if (this.checkIfLoginEmpty(userLogged)){
+                    let userLoggedLogin = userLogged.username?.valueOf() as string;
+                    let userLoggedToken = userLogged.token?.valueOf() as string;
+                    if (this.checkIfUndefined(userLoggedLogin) && this.checkIfUndefined(userLoggedToken)){
+                        this.getUserInformation(userLoggedLogin, userLoggedToken).then((user => {
+                            user.token = userLoggedToken;
+                            localStorage.setItem('user', JSON.stringify(user));
+                            this.userSubject.next(user);
+                            resolve(user);
+                        }));
+                    }else{
+                        reject(new Error("login or password somehow is empty"));
+                    }
+                } else {
+                    reject(new Error("Invalid Login"));
                 }
-            } else {
-                throwError(() => new Error("Invalid Login"))
-            }
+            }));
         });
     }
 
@@ -45,29 +47,22 @@ export class UserService {
         this.userSubject.next(emptyUser);
     }
 
-    private loginRequest(loginInput: LoginInput): LoginResponse{
-        let loginResponse: LoginResponse;
-        this.apiService.loginUserRequest(loginInput).subscribe({
-            next: response => loginResponse = response,
-            error: (_err) => throwError(() => new Error("Login was not successful")),
-            complete: () => {
-                return loginResponse;
-            }
+    private loginRequest(loginInput: LoginInput): Promise<LoginResponse>{
+        return new Promise((resolve, reject) => {
+            this.apiService.loginUserRequest(loginInput).subscribe({
+                next: response => resolve(response),
+                error: (_err) => reject(new Error("Invalid login"))
+            });
         });
-        return loginResponse = {}
     }
 
-    private getUserInformation(username: string, token: string): User{
-        let user: User;
-        this.apiService.getUserInformation(username, token).subscribe({
-            next: response => user = response,
-            error: (_err) => throwError(() => new Error("Couldn't get user information")),
-            complete: () => {
-                this.router.navigate(['/home'])
-                return user;
-            }
-        });
-        return user = {}
+    private getUserInformation(username: string, token: string): Promise<User>{
+        return new Promise((resolve, reject) => {
+            this.apiService.getUserInformation(username, token).subscribe({
+                next: response => resolve(response),
+                error: (_err) => throwError(() => new Error("Couldn't get user information")),
+            });
+        })
     }
 
     private checkIfLoginEmpty(loginResponse: LoginResponse): boolean{
