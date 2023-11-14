@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../interfaces/user';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../service/api/api-request.service';
 import { throwError } from 'rxjs';
 import { UserService } from '../service/user/user.service';
+import { LoginResponse } from '../interfaces/login-response';
 
 @Component({
   selector: 'app-register-confirmation',
@@ -18,26 +18,29 @@ export class ConfirmationComponent implements OnInit {
         private route: ActivatedRoute){}
 
     ngOnInit(): void {
-        this.route.params.subscribe(params => {
-            const username = params['username'];
-            this.confirmUser(username);
+        this.route.params.subscribe({
+            next: param => {
+                let username = param['username'];
+                this.confirmUser(username);
+            },
+            error: (err) => throwError(() => new Error("Couldn't confirm email"))
         });
     }
 
     confirmUser(username: string) {
-        let token !: string;
+        let confirmedUser: LoginResponse;
         this.apiService.confirmUserEmail(username).subscribe({
             next: response => {
-                token = response.token as string;
+                confirmedUser = response;
             },
             error: (err) => throwError(() => new Error("Couldn't confirm email")),
             complete: () => {
-                this.autoLoginAfterConfirmEmail(username, token);
+                this.autoLoginAfterConfirmEmail(confirmedUser);
             }
         });
     }
 
-    autoLoginAfterConfirmEmail(username: string, token: string){
-        this.userService.autoLogin(username, token);
+    autoLoginAfterConfirmEmail(confirmedUser: LoginResponse){
+        this.userService.autoLogin(confirmedUser);
     }
 }

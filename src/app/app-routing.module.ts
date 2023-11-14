@@ -8,7 +8,7 @@ import { ConfirmationComponent } from './register-confirmation/confirmation.comp
 const routes: Routes = [
     { path: 'login', component: LoginFormComponent },
     { path: 'register', component: RegisterFormComponent },
-    { path: 'register/confirm', component: ConfirmationComponent },
+    { path: `register/confirm/:username`, component: ConfirmationComponent },
     { path: 'home', component: HomeComponent },
     { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];

@@ -41,8 +41,10 @@ export class UserService {
         });
     }
 
-    autoLogin(username: string, token: string) {
+    autoLogin(confirmedUser: LoginResponse) {
         return new Promise((resolve, reject) => {
+            let username = confirmedUser.username?.valueOf() as string;
+            let token = confirmedUser.token?.valueOf() as string;
             this.getUserInformationPromise(username, token).then((user => {
                 user.token = token;
                 localStorage.setItem('user', JSON.stringify(user));
