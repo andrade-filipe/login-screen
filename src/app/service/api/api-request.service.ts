@@ -14,22 +14,26 @@ import { User } from 'src/app/interfaces/user';
 export class ApiService {
     readonly API_URL: string = `${this.config.apiUrl}/api/v1`;
 
-    private token !: string | undefined;
+    private httpOptionsWithToken(token:string){
+        return {
+            method: 'GET',
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            })
+        }
+    }
 
-    httpOptionsWithToken = {
-        method: 'GET',
-        headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${this.token}`,
-        }),
-    };
-
-    httpOptions = {
-        method: 'POST',
-        headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-        }),
-    };
+    private httpOptionsNormal(){
+        return {
+            method: 'POST',
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            })
+        }
+    }
 
     constructor(private http: HttpClient, @Inject(APP_SERVICE_CONFIG) private config: AppConfig) {}
 
@@ -37,7 +41,7 @@ export class ApiService {
         return this.http.post<void>(
             `${this.API_URL}/auth/register`,
             registerThis,
-            this.httpOptions
+            this.httpOptionsNormal()
         );
     }
 
@@ -45,13 +49,12 @@ export class ApiService {
         return this.http.post<LoginResponse>(
             `${this.API_URL}/auth/login`,
             loginInput,
-            this.httpOptions
+            this.httpOptionsNormal()
         )
     }
 
     getUserInformation(username: string, token: string): Observable<User> {
         let url = `${this.API_URL}/home/information?username=${username}`
-        this.token = token;
-        return this.http.get<User>(url, this.httpOptionsWithToken);
+        return this.http.get<User>(url, this.httpOptionsWithToken(token));
     }
 }

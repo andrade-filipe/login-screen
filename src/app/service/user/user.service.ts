@@ -30,6 +30,7 @@ export class UserService {
                             localStorage.setItem('user', JSON.stringify(user));
                             this.userSubject.next(user);
                             resolve(user);
+                            this.router.navigate(['/home']);
                         }));
                     }else{
                         reject(new Error("login or password somehow is empty"));
