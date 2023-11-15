@@ -87,6 +87,10 @@ font size standards
     padding: 10rem 0;
 }
 
+/* FORGOT PASSWORD */
+.forgot-password__form{
+    padding: 10rem 0;
+}
 /* FORM */
 
 .form-control:first-of-type {
@@ -112,7 +116,7 @@ font size standards
 }
 
 .form_button:first-of-type {
-    margin-right: 1.5rem;
+    margin-right: 1.25rem;
 }
 
 /* BUTTON */
