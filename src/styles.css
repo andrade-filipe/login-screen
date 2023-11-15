@@ -103,12 +103,16 @@ font size standards
     background-color: transparent;
 }
 
+.form-control:hover {
+    border-color: var(--clr-flat-white);
+}
+
 .form-control::placeholder {
     color: var(--clr-flat-white-opacity);
 }
 
 .form_button:first-of-type {
-    margin-right: 1.25rem;
+    margin-right: 1.5rem;
 }
 
 /* BUTTON */
@@ -116,6 +120,7 @@ font size standards
 .btn {
     font-weight: 700;
     font-size: var(--fs-small);
+    margin-bottom: 1rem;
 }
 
 .btn-outline-success,
@@ -154,4 +159,12 @@ body {
 body {
     margin: 0;
     font-family: "Onest", sans-serif;
+}
+
+.login-form__forgot{
+    color: var(--clr-flat-white-opacity);
+}
+
+.login-form__forgot:hover{
+    color: var(--clr-flat-white);
 }

@@ -1,4 +1,4 @@
-<div class="login-container | container">
+<div class="login-container | container text-center">
     <form class="login-form | text-center" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="login-form_username | row justify-content-center align-items-center">
             <div class="col-lg-4 col-6">
@@ -22,19 +22,22 @@
                 />
             </div>
         </div>
-        <button
-            type="submit"
-            class="form_button | btn btn-outline-success"
-            [disabled]="!loginForm.valid"
-        >
-            Login
-        </button>
-        <button
-            routerLink="/register"
-            type="button"
-            class="form_button | btn btn-outline-secondary"
-        >
-            Register
-        </button>
+        <div class="login-form__buttons">
+            <button
+                type="submit"
+                class="form_button | btn btn-outline-success"
+                [disabled]="!loginForm.valid"
+            >
+                Login
+            </button>
+            <button
+                routerLink="/register"
+                type="button"
+                class="form_button | btn btn-outline-secondary"
+            >
+                Register
+            </button>
+        </div>
+        <a class="login-form__forgot" routerLink="/forgot-password">forgot password?</a>
     </form>
 </div>

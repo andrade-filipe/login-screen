@@ -19,6 +19,7 @@ import { GlobalHttpErrorHandlerInterceptor } from './interceptors/global-http-er
 import { ErrorHandlerService } from './service/error-handler/error-handler.service';
 import { HomeComponent } from './components/home/home.component';
 import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 @NgModule({
     declarations: [
@@ -27,6 +28,7 @@ import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.
         RegisterFormComponent,
         HomeComponent,
         ConfirmEmailComponent,
+        ForgotPasswordComponent,
     ],
     imports: [
         BrowserModule,

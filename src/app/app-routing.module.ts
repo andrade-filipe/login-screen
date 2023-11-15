@@ -4,12 +4,14 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { HomeComponent } from './components/home/home.component';
 import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 const routes: Routes = [
     { path: 'login', component: LoginFormComponent },
     { path: 'register', component: RegisterFormComponent },
     { path: `register/confirm/:username`, component: ConfirmEmailComponent },
     { path: 'home', component: HomeComponent },
+    { path: 'forgot-password', component: ForgotPasswordComponent},
     { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 
