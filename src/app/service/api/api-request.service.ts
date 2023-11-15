@@ -3,6 +3,8 @@ import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AppConfig } from 'src/app/app-config/app-config.interface';
 import { APP_SERVICE_CONFIG } from 'src/app/app-config/app-config.service';
+import { ChangePasswordInput } from 'src/app/interfaces/change-password-input';
+import { ForgotPassword } from 'src/app/interfaces/forgot-password';
 import { LoginInput } from 'src/app/interfaces/login-input';
 import { LoginResponse } from 'src/app/interfaces/login-response';
 import { RegisterInput } from 'src/app/interfaces/register-input';
@@ -36,24 +38,28 @@ export class ApiService {
     constructor(private http: HttpClient, @Inject(APP_SERVICE_CONFIG) private config: AppConfig) {}
 
     registerUserRequest(registerThis: RegisterInput): Observable<void> {
-        return this.http.post<void>(
-            `${this.API_URL}/auth/register`,
-            registerThis,
-            this.httpOptionsNormal()
-        );
+        let url = `${this.API_URL}/auth/register`;
+        return this.http.post<void>(url, registerThis, this.httpOptionsNormal());
     }
 
     loginUserRequest(loginInput: LoginInput): Observable<LoginResponse> {
-        return this.http.post<LoginResponse>(
-            `${this.API_URL}/auth/login`,
-            loginInput,
-            this.httpOptionsNormal()
-        );
+        let url = `${this.API_URL}/auth/login`;
+        return this.http.post<LoginResponse>(url, loginInput, this.httpOptionsNormal());
     }
 
     confirmUserEmail(username: string): Observable<LoginResponse> {
         let url = `${this.API_URL}/auth/register/confirm?username=${username}`;
         return this.http.get<LoginResponse>(url, this.httpOptionsNormal());
+    }
+
+    forgotPasswordRequest(forgotPassword: ForgotPassword) {
+        let url = `${this.API_URL}/api/v1/auth/forgot-password`;
+        return this.http.post<void>(url, forgotPassword, this.httpOptionsNormal());
+    }
+
+    changePasswordRequest(changePassword: ChangePasswordInput){
+        let url = `${this.API_URL}/api/v1/auth/change-password`;
+        return this.http.post<void>(url, changePassword, this.httpOptionsNormal());
     }
 
     getUserInformation(username: string, token: string): Observable<User> {

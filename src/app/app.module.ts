@@ -20,6 +20,7 @@ import { ErrorHandlerService } from './service/error-handler/error-handler.servi
 import { HomeComponent } from './components/home/home.component';
 import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 @NgModule({
     declarations: [
@@ -29,6 +30,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
         HomeComponent,
         ConfirmEmailComponent,
         ForgotPasswordComponent,
+        ChangePasswordComponent,
     ],
     imports: [
         BrowserModule,

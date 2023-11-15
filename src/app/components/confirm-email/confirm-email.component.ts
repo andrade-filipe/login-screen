@@ -14,11 +14,11 @@ export class ConfirmEmailComponent implements OnInit {
     constructor(
         private apiService: ApiService,
         private userService: UserService,
-        private route: ActivatedRoute
+        private activatedRoute: ActivatedRoute
     ) {}
 
     ngOnInit(): void {
-        this.route.params.subscribe({
+        this.activatedRoute.params.subscribe({
             next: (param) => {
                 let username = param['username'];
                 this.confirmUser(username);

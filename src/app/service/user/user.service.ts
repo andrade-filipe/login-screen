@@ -63,6 +63,7 @@ export class UserService {
         let emptyUser: User = {};
         localStorage.removeItem('user');
         this.userSubject.next(emptyUser);
+        this.router.navigate(['/login'])
     }
 
     private loginRequestPromise(loginInput: LoginInput): Promise<LoginResponse> {
