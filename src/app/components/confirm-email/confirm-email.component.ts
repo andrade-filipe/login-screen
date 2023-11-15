@@ -27,7 +27,7 @@ export class ConfirmEmailComponent implements OnInit {
         });
     }
 
-    confirmUser(username: string) {
+    private confirmUser(username: string) {
         let confirmedUser: LoginResponse;
         this.apiService.confirmUserEmail(username).subscribe({
             next: (response) => {
@@ -40,7 +40,7 @@ export class ConfirmEmailComponent implements OnInit {
         });
     }
 
-    autoLoginAfterConfirmEmail(confirmedUser: LoginResponse) {
+    private autoLoginAfterConfirmEmail(confirmedUser: LoginResponse) {
         this.userService.autoLogin(confirmedUser);
     }
 }
