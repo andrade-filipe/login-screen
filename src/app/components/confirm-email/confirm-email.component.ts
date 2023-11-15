@@ -6,11 +6,11 @@ import { UserService } from '../../service/user/user.service';
 import { LoginResponse } from '../../interfaces/login-response';
 
 @Component({
-    selector: 'app-register-confirmation',
-    templateUrl: './confirmation.component.html',
-    styleUrls: ['./confirmation.component.css'],
+    selector: 'app-confirm-email',
+    templateUrl: './confirm-email.component.html',
+    styleUrls: ['./confirm-email.component.css'],
 })
-export class ConfirmationComponent implements OnInit {
+export class ConfirmEmailComponent implements OnInit {
     constructor(
         private apiService: ApiService,
         private userService: UserService,

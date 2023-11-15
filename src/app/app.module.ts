@@ -18,7 +18,7 @@ import { APP_CONFIG, APP_SERVICE_CONFIG } from './app-config/app-config.service'
 import { GlobalHttpErrorHandlerInterceptor } from './interceptors/global-http-error-handler.interceptor';
 import { ErrorHandlerService } from './service/error-handler/error-handler.service';
 import { HomeComponent } from './components/home/home.component';
-import { ConfirmationComponent } from './components/register-confirmation/confirmation.component';
+import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +26,7 @@ import { ConfirmationComponent } from './components/register-confirmation/confir
         LoginFormComponent,
         RegisterFormComponent,
         HomeComponent,
-        ConfirmationComponent,
+        ConfirmEmailComponent,
     ],
     imports: [
         BrowserModule,
