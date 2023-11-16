@@ -12,7 +12,7 @@ const routes: Routes = [
     { path: 'register', component: RegisterFormComponent },
     { path: `register/confirm/:username`, component: ConfirmEmailComponent },
     { path: 'home', component: HomeComponent },
-    { path: 'forgot-password/', component: ForgotPasswordComponent},
+    { path: 'forgot-password', component: ForgotPasswordComponent},
     { path: 'change-password/:username', component: ChangePasswordComponent},
     { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
