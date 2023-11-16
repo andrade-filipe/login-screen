@@ -5,6 +5,7 @@ import { User } from 'src/app/interfaces/user';
 import { ApiService } from '../api/api-request.service';
 import { Router } from '@angular/router';
 import { LoginResponse } from 'src/app/interfaces/login-response';
+import { UserRole } from 'src/app/enums/user-role';
 
 @Injectable({
     providedIn: 'root',
@@ -79,8 +80,14 @@ export class UserService {
         return new Promise((resolve, reject) => {
             this.apiService.getUserInformation(username, token).subscribe({
                 next: (response) => {
+                    if(response.userRole == UserRole.USER){
+                        this.router.navigate(['/home']);
+                    } else if(response.userRole == UserRole.ADMIN){
+                        this.router.navigate(['/admin']);
+                    }else {
+                        throwError(() => new Error("User has no role"))
+                    }
                     resolve(response);
-                    this.router.navigate(['/home']);
                 },
                 error: (_err) => reject(new Error("Couldn't get user information")),
             });

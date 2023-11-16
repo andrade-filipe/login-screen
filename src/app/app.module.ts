@@ -21,6 +21,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
     declarations: [
@@ -31,6 +32,7 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
         ConfirmEmailComponent,
         ForgotPasswordComponent,
         ChangePasswordComponent,
+        AdminComponent,
     ],
     imports: [
         BrowserModule,
