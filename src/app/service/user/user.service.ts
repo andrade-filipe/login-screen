@@ -32,9 +32,8 @@ export class UserService {
                         this.getUserInformationPromise(userLoggedLogin, userLoggedToken).then(
                             (user) => {
                                 user.token = userLoggedToken;
-                                localStorage.setItem('user', JSON.stringify(user));
                                 this.userSubject.next(user);
-                                this.routerNavigation(user);
+                                localStorage.setItem('user', JSON.stringify(user));
                                 resolve(user);
                             }
                         );
@@ -55,7 +54,6 @@ export class UserService {
             this.getUserInformationPromise(username, token).then((user) => {
                 user.token = token;
                 this.userSubject.next(user);
-                this.routerNavigation(user);
                 localStorage.setItem('user', JSON.stringify(user));
                 resolve(user);
             });
@@ -66,7 +64,7 @@ export class UserService {
         let emptyUser: User = {};
         localStorage.removeItem('user');
         this.userSubject.next(emptyUser);
-        this.router.navigate(['/login'])
+        this.router.navigate(['/login']);
     }
 
     private loginRequestPromise(loginInput: LoginInput): Promise<LoginResponse> {
@@ -96,14 +94,22 @@ export class UserService {
         return !(text === undefined);
     }
 
-    private routerNavigation(user: User): void{
-        console.log(user.userRole);
-        if(user.userRole == UserRole.ADMIN){
+    private routerNavigation(): void {
+        let userRoleString!: string;
+
+        this.user.pipe(
+            map((response) => {
+                userRoleString = response.userRole?.valueOf() as string;
+            }),
+            catchError(() => throwError(() => new Error('router error')))
+        );
+        console.log(userRoleString);
+        if (userRoleString == 'ADMIN') {
             this.router.navigate(['/admin']);
-        } else if (user.userRole == UserRole.USER){
+        } else if (userRoleString == 'USER') {
             this.router.navigate(['/home']);
         } else {
-            throwError(() => new Error("Something went wrong with user role"));
+            throwError(() => new Error('Something went wrong with user role'));
         }
     }
 }
