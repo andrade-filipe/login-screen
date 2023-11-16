@@ -37,32 +37,32 @@ export class ApiService {
 
     constructor(private http: HttpClient, @Inject(APP_SERVICE_CONFIG) private config: AppConfig) {}
 
-    registerUserRequest(registerThis: RegisterInput): Observable<void> {
+    public registerUserRequest(registerThis: RegisterInput): Observable<void> {
         let url = `${this.API_URL}/auth/register`;
         return this.http.post<void>(url, registerThis, this.httpOptionsNormal());
     }
 
-    loginUserRequest(loginInput: LoginInput): Observable<LoginResponse> {
+    public loginUserRequest(loginInput: LoginInput): Observable<LoginResponse> {
         let url = `${this.API_URL}/auth/login`;
         return this.http.post<LoginResponse>(url, loginInput, this.httpOptionsNormal());
     }
 
-    confirmUserEmail(username: string): Observable<LoginResponse> {
+    public confirmUserEmail(username: string): Observable<LoginResponse> {
         let url = `${this.API_URL}/auth/register/confirm?username=${username}`;
         return this.http.get<LoginResponse>(url, this.httpOptionsNormal());
     }
 
-    forgotPasswordRequest(forgotPassword: ForgotPassword) {
+    public forgotPasswordRequest(forgotPassword: ForgotPassword): Observable<void> {
         let url = `${this.API_URL}/auth/forgot-password`;
         return this.http.post<void>(url, forgotPassword, this.httpOptionsNormal());
     }
 
-    changePasswordRequest(changePassword: ChangePasswordInput){
+    public changePasswordRequest(changePassword: ChangePasswordInput): Observable<void>{
         let url = `${this.API_URL}/auth/change-password`;
         return this.http.post<void>(url, changePassword, this.httpOptionsNormal());
     }
 
-    getUserInformation(username: string, token: string): Observable<User> {
+    public getUserInformation(username: string, token: string): Observable<User> {
         let url = `${this.API_URL}/home/information?username=${username}`;
         return this.http.get<User>(url, this.httpOptionsWithToken(token));
     }
