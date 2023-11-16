@@ -53,12 +53,12 @@ export class ApiService {
     }
 
     forgotPasswordRequest(forgotPassword: ForgotPassword) {
-        let url = `${this.API_URL}/api/v1/auth/forgot-password`;
+        let url = `${this.API_URL}/auth/forgot-password`;
         return this.http.post<void>(url, forgotPassword, this.httpOptionsNormal());
     }
 
     changePasswordRequest(changePassword: ChangePasswordInput){
-        let url = `${this.API_URL}/api/v1/auth/change-password`;
+        let url = `${this.API_URL}/auth/change-password`;
         return this.http.post<void>(url, changePassword, this.httpOptionsNormal());
     }
 
