@@ -91,6 +91,10 @@ font size standards
 .forgot-password__form{
     padding: 10rem 0;
 }
+
+.change-password__form{
+    padding: 10rem 0;
+}
 /* FORM */
 
 .form-control:first-of-type {

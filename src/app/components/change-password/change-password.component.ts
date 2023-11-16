@@ -10,25 +10,16 @@ import { ApiService } from 'src/app/service/api/api-request.service';
     templateUrl: './change-password.component.html',
     styleUrls: ['./change-password.component.css'],
 })
-export class ChangePasswordComponent implements OnInit {
+export class ChangePasswordComponent{
+
     constructor(
         private apiService: ApiService,
         private activatedRoute: ActivatedRoute,
         private route: Router
     ) {}
 
-    ngOnInit(): void {
-        this.activatedRoute.params.subscribe({
-            next: (param) => {
-                let usernameFromRoute = param['username'];
-                this.changePasswordForm.value.username = usernameFromRoute;
-            },
-            error: (err) => throwError(() => new Error("Couldn't confirm email")),
-        });
-    }
-
     changePasswordForm = new FormGroup({
-        username: new FormControl('', Validators.required),
+        username: new FormControl(this.getUsernameFromRoute(), Validators.required),
         newPassword: new FormControl('', Validators.required),
         confirmNewPassword: new FormControl('', Validators.required),
     });
@@ -62,5 +53,9 @@ export class ChangePasswordComponent implements OnInit {
             return false;
         }
         return newPassword === confirmNewPassword;
+    }
+
+    public getUsernameFromRoute(): string | null {
+        return this.activatedRoute.snapshot.paramMap.get('username');
     }
 }
