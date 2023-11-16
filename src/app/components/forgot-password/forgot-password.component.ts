@@ -27,7 +27,7 @@ export class ForgotPasswordComponent {
 
     private sendForgotPasswordRequest(forgotPassword: ForgotPassword){
         this.apiService.forgotPasswordRequest(forgotPassword).subscribe({
-            error: (err) => throwError(() => new Error("Couldn't send request")),
+            error: (err) => throwError(() => new Error("Couldn't send forgot-password request")),
             complete: () => {
                 this.router.navigate(['/login']);
             }
