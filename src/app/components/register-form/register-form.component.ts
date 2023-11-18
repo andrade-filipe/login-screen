@@ -50,7 +50,7 @@ export class RegisterFormComponent {
             };
             this.registerUser(registerInput);
         } else {
-            console.error("Couldn't send the register form");
+            throwError(() => new Error('password is not the same'));
         }
     }
 
