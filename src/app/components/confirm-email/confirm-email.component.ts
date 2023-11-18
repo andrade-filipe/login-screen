@@ -21,13 +21,13 @@ export class ConfirmEmailComponent implements OnInit {
         this.activatedRoute.params.subscribe({
             next: (param) => {
                 let username = param['username'];
-                this.confirmUser(username);
+                this.confirmUserEmail(username);
             },
             error: (err) => throwError(() => new Error("Couldn't confirm email")),
         });
     }
 
-    private confirmUser(username: string) {
+    private confirmUserEmail(username: string) {
         let confirmedUser: LoginResponse;
         this.apiService.confirmUserEmail(username).subscribe({
             next: (response) => {

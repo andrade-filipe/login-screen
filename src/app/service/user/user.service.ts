@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map, throwError } from 'rxjs';
+import { catchError, map, throwError } from 'rxjs';
 import { LoginInput } from 'src/app/interfaces/login-input';
 import { User } from 'src/app/interfaces/user';
 import { ApiService } from '../api/api-request.service';
@@ -34,7 +34,8 @@ export class UserService {
                 .pipe(
                     map((response) => {
                         resolve(response);
-                    })
+                    }),
+                    catchError(() => throwError(() => new Error("Invalid Login")))
                 )
                 .subscribe();
         });
@@ -48,7 +49,8 @@ export class UserService {
                 .pipe(
                     map((response) => {
                         resolve(response);
-                    })
+                    }),
+                    catchError(() => throwError(() => new Error("Invalid Api Response")))
                 )
                 .subscribe();
         });

@@ -26,8 +26,7 @@ export class ChangePasswordComponent {
     onSubmit() {
         let usernameFromForm = this.changePasswordForm.value.username?.valueOf() as string;
         let newPasswordFromForm = this.changePasswordForm.value.newPassword?.valueOf() as string;
-        let confirmNewPasswordFromForm =
-            this.changePasswordForm.value.confirmNewPassword?.valueOf() as string;
+        let confirmNewPasswordFromForm = this.changePasswordForm.value.confirmNewPassword?.valueOf() as string;
 
         if (this.confirmPassword(newPasswordFromForm, confirmNewPasswordFromForm)) {
             let changePassword: ChangePasswordInput = {
