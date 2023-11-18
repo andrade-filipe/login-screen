@@ -35,7 +35,7 @@ export class UserService {
                     map((response) => {
                         resolve(response);
                     }),
-                    catchError(() => throwError(() => new Error("Invalid Login")))
+                    catchError(() => throwError(() => new Error("Invalid username or password")))
                 )
                 .subscribe();
         });
@@ -50,7 +50,7 @@ export class UserService {
                     map((response) => {
                         resolve(response);
                     }),
-                    catchError(() => throwError(() => new Error("Invalid Api Response")))
+                    catchError(() => throwError(() => new Error("could not get data")))
                 )
                 .subscribe();
         });

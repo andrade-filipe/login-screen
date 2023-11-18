@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { AppConfig } from 'src/app/app-config/app-config.interface';
 import { APP_SERVICE_CONFIG } from 'src/app/app-config/app-config.service';
 import { ChangePasswordInput } from 'src/app/interfaces/change-password-input';
@@ -39,31 +39,43 @@ export class ApiService {
 
     public registerUserRequest(registerThis: RegisterInput): Observable<void> {
         let url = `${this.API_URL}/auth/register`;
-        return this.http.post<void>(url, registerThis, this.httpOptionsNormal());
+        return this.http.post<void>(url, registerThis, this.httpOptionsNormal()).pipe(
+            catchError(() => throwError(() => new Error("Request Error on Register")))
+        );
     }
 
     public loginUserRequest(loginInput: LoginInput): Observable<LoginResponse> {
         let url = `${this.API_URL}/auth/login`;
-        return this.http.post<LoginResponse>(url, loginInput, this.httpOptionsNormal());
+        return this.http.post<LoginResponse>(url, loginInput, this.httpOptionsNormal()).pipe(
+            catchError(() => throwError(() => new Error("Request Error on Login")))
+        );;
     }
 
     public confirmUserEmail(username: string): Observable<LoginResponse> {
         let url = `${this.API_URL}/auth/register/confirm?username=${username}`;
-        return this.http.get<LoginResponse>(url, this.httpOptionsNormal());
+        return this.http.get<LoginResponse>(url, this.httpOptionsNormal()).pipe(
+            catchError(() => throwError(() => new Error("Request Error on Confirm Email")))
+        );;
     }
 
     public forgotPasswordRequest(forgotPassword: ForgotPassword): Observable<void> {
         let url = `${this.API_URL}/auth/forgot-password`;
-        return this.http.post<void>(url, forgotPassword, this.httpOptionsNormal());
+        return this.http.post<void>(url, forgotPassword, this.httpOptionsNormal()).pipe(
+            catchError(() => throwError(() => new Error("Request Error on Forgot Password")))
+        );;
     }
 
     public changePasswordRequest(changePassword: ChangePasswordInput): Observable<void> {
         let url = `${this.API_URL}/auth/change-password`;
-        return this.http.post<void>(url, changePassword, this.httpOptionsNormal());
+        return this.http.post<void>(url, changePassword, this.httpOptionsNormal()).pipe(
+            catchError(() => throwError(() => new Error("Request Error on Change Password")))
+        );;
     }
 
     public getUserInformation(username: string, token: string): Observable<User> {
         let url = `${this.API_URL}/home/information?username=${username}`;
-        return this.http.get<User>(url, this.httpOptionsWithToken(token));
+        return this.http.get<User>(url, this.httpOptionsWithToken(token)).pipe(
+            catchError(() => throwError(() => new Error("Request Error on Get User Information")))
+        );;
     }
 }

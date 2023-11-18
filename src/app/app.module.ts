@@ -22,6 +22,7 @@ import { ConfirmEmailComponent } from './components/confirm-email/confirm-email.
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
     declarations: [
@@ -47,6 +48,7 @@ import { AdminComponent } from './components/admin/admin.component';
         FormsModule,
         ReactiveFormsModule,
         MatSelectModule,
+        MatSnackBarModule
     ],
     providers: [
         {
@@ -62,6 +64,9 @@ import { AdminComponent } from './components/admin/admin.component';
             useClass: GlobalHttpErrorHandlerInterceptor,
             multi: true,
         },
+        {
+            provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+            useValue: {duration: 2500}}
     ],
     bootstrap: [AppComponent],
 })

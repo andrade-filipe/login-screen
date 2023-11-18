@@ -1,17 +1,20 @@
-import { ErrorHandler, Injectable, NgZone } from '@angular/core';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBar } from '@angular/material/snack-bar';
+import { ErrorHandler, Inject, Injectable, NgZone } from '@angular/core';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ErrorHandlerService implements ErrorHandler {
-    constructor(private zone: NgZone) {}
+    constructor(
+        private zone: NgZone,
+        private snackbar: MatSnackBar) {}
 
     handleError(error: unknown) {
         this.zone.run(() => {
             if (error instanceof Error) {
-                console.warn(error);
+                this.snackbar.open(error.message, 'ok');
             } else {
-                console.error('System Failed');
+                this.snackbar.open("system failed", ':(');
             }
         });
     }
