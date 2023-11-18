@@ -1,9 +1,8 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AppConfig } from 'src/app/app-config/app-config.interface';
 import { APP_SERVICE_CONFIG } from 'src/app/app-config/app-config.service';
-import { ApiException } from 'src/app/interfaces/api-exception';
 import { ChangePasswordInput } from 'src/app/interfaces/change-password-input';
 import { ForgotPassword } from 'src/app/interfaces/forgot-password';
 import { LoginInput } from 'src/app/interfaces/login-input';
