@@ -12,7 +12,7 @@ export class GlobalHttpErrorHandlerInterceptor implements HttpInterceptor {
         return next.handle(request).pipe(
             catchError((err) => {
                 return throwError(() => {
-                    console.log(err)
+                    console.log(err);
                     return err;
                 });
             }),

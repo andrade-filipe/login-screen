@@ -1,39 +1,40 @@
 <div class="register-container | container">
-    <form class="register-form | text-center" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <form class="register-form | text-center" [formGroup]="registerForm"
+        (ngSubmit)="onSubmit()">
         <!-- Name -->
-        <div class="register-form_name | row justify-content-center align-items-center">
+        <div
+            class="register-form_name | row justify-content-center align-items-center">
             <div class="col-lg-4 col-6">
                 <input
                     id="name"
                     class="form-control"
                     type="text"
                     formControlName="name"
-                    placeholder="Name*"
-                />
+                    placeholder="Name*" />
             </div>
         </div>
         <!-- Username -->
-        <div class="register-form_username | row justify-content-center align-items-center">
+        <div
+            class="register-form_username | row justify-content-center align-items-center">
             <div class="col-lg-4 col-6">
                 <input
                     id="username"
                     class="form-control"
                     type="text"
                     formControlName="username"
-                    placeholder="Username*"
-                />
+                    placeholder="Username*" />
             </div>
         </div>
         <!-- Email -->
-        <div class="register-form_email | row justify-content-center align-items-center">
+        <div
+            class="register-form_email | row justify-content-center align-items-center">
             <div class="col-lg-4 col-6">
                 <input
                     id="email"
                     class="form-control"
                     type="text"
                     formControlName="email"
-                    placeholder="Email*"
-                />
+                    placeholder="Email*" />
             </div>
         </div>
         <div class="row justify-content-center align-items-center">
@@ -44,8 +45,7 @@
                     matInput
                     [matDatepicker]="dp"
                     [formControl]="birth"
-                    placeholder="Month/Day/Year"
-                />
+                    placeholder="Month/Day/Year" />
                 <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
                 <mat-datepicker #dp></mat-datepicker>
             </mat-form-field>
@@ -57,44 +57,43 @@
                 <mat-select
                     [(ngModel)]="selectedGender"
                     [ngModelOptions]="{ standalone: true }"
-                    name="gender"
-                >
-                    <mat-option id="gender" *ngFor="let gender of genders" [value]="gender.value">
+                    name="gender">
+                    <mat-option id="gender" *ngFor="let gender of genders"
+                        [value]="gender.value">
                         {{ gender.text }}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
         <!-- PassWord -->
-        <div class="register-form_password | row justify-content-center align-items-center">
+        <div
+            class="register-form_password | row justify-content-center align-items-center">
             <div class="col-lg-4 col-6">
                 <input
                     id="password"
                     class="form-control"
                     type="password"
                     formControlName="password"
-                    placeholder="Password*"
-                />
+                    placeholder="Password*" />
             </div>
         </div>
         <!-- ConfirmPassWord -->
-        <div class="register-form_confirm-password | row justify-content-center align-items-center">
+        <div
+            class="register-form_confirm-password | row justify-content-center align-items-center">
             <div class="col-lg-4 col-6">
                 <input
                     id="confirmPassword"
                     class="form-control"
                     type="password"
                     formControlName="confirmPassword"
-                    placeholder="Confirm Password*"
-                />
+                    placeholder="Confirm Password*" />
             </div>
         </div>
         <!-- Button -->
         <button
             type="submit"
             class="form_button | btn btn-outline-success"
-            [disabled]="!registerForm.valid"
-        >
+            [disabled]="!registerForm.valid">
             Submit
         </button>
     </form>

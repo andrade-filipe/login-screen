@@ -1,12 +1,11 @@
-import { Injectable, Optional } from '@angular/core';
-import { BehaviorSubject, Observable, catchError, map, tap, throwError } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { map, throwError } from 'rxjs';
 import { LoginInput } from 'src/app/interfaces/login-input';
 import { User } from 'src/app/interfaces/user';
 import { ApiService } from '../api/api-request.service';
 import { Router } from '@angular/router';
 import { LoginResponse } from 'src/app/interfaces/login-response';
 import { UserRole } from 'src/app/enums/user-role';
-import { Check } from '../validations/check';
 import { UserObject } from 'src/app/interfaces/user-class';
 
 @Injectable({
@@ -55,10 +54,10 @@ export class UserService {
         });
         let userObject = this.mapUserObject(promise);
         userObject.setToken(loginResponse.token);
-        this.saveToLocalStorage(userObject);
+        this.saveToLocalStorageAndRedirect(userObject);
     }
 
-    private saveToLocalStorage(user: UserObject) {
+    private saveToLocalStorageAndRedirect(user: UserObject) {
         this.redirectUser(user.getUserRole());
         localStorage.setItem('user', JSON.stringify(user));
     }

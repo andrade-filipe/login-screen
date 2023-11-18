@@ -1,16 +1,24 @@
-import { Gender } from "../enums/gender";
-import { UserRole } from "../enums/user-role";
+import { Gender } from '../enums/gender';
+import { UserRole } from '../enums/user-role';
 
-export class UserObject{
-    name !: string;
-    username! : string;
-    email !: string;
-    gender !: Gender;
-    birthDate !: Date;
-    role !: UserRole;
-    token !: string;
+export class UserObject {
+    name!: string;
+    username!: string;
+    email!: string;
+    gender!: Gender;
+    birthDate!: Date;
+    role!: UserRole;
+    token!: string;
 
-    constructor(name: string, username: string, email: string, gender: Gender, birthDate: Date, role: UserRole, token: string){
+    constructor(
+        name: string,
+        username: string,
+        email: string,
+        gender: Gender,
+        birthDate: Date,
+        role: UserRole,
+        token: string
+    ) {
         this.name = name;
         this.username = username;
         this.email = email;
@@ -20,11 +28,11 @@ export class UserObject{
         this.token = token;
     }
 
-    getUserRole(){
+    getUserRole() {
         return this.role;
     }
 
-    setToken(token: string){
+    setToken(token: string) {
         this.token = token;
     }
 }

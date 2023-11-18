@@ -58,7 +58,7 @@ export class ApiService {
         return this.http.post<void>(url, forgotPassword, this.httpOptionsNormal());
     }
 
-    public changePasswordRequest(changePassword: ChangePasswordInput): Observable<void>{
+    public changePasswordRequest(changePassword: ChangePasswordInput): Observable<void> {
         let url = `${this.API_URL}/auth/change-password`;
         return this.http.post<void>(url, changePassword, this.httpOptionsNormal());
     }

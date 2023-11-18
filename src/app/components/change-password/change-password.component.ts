@@ -10,8 +10,7 @@ import { ApiService } from 'src/app/service/api/api-request.service';
     templateUrl: './change-password.component.html',
     styleUrls: ['./change-password.component.css'],
 })
-export class ChangePasswordComponent{
-
+export class ChangePasswordComponent {
     constructor(
         private apiService: ApiService,
         private activatedRoute: ActivatedRoute,
@@ -27,7 +26,8 @@ export class ChangePasswordComponent{
     onSubmit() {
         let usernameFromForm = this.changePasswordForm.value.username?.valueOf() as string;
         let newPasswordFromForm = this.changePasswordForm.value.newPassword?.valueOf() as string;
-        let confirmNewPasswordFromForm = this.changePasswordForm.value.confirmNewPassword?.valueOf() as string;
+        let confirmNewPasswordFromForm =
+            this.changePasswordForm.value.confirmNewPassword?.valueOf() as string;
 
         if (this.confirmPassword(newPasswordFromForm, confirmNewPasswordFromForm)) {
             let changePassword: ChangePasswordInput = {
@@ -41,7 +41,9 @@ export class ChangePasswordComponent{
     private changePasswordOfUser(changePassword: ChangePasswordInput) {
         this.apiService.changePasswordRequest(changePassword).subscribe({
             error: (_err) => throwError(() => new Error("Couldn't change password")),
-            complete: () => {this.route.navigate(['/login'])}
+            complete: () => {
+                this.route.navigate(['/login']);
+            },
         });
     }
 

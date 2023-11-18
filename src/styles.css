@@ -88,11 +88,11 @@ font size standards
 }
 
 /* FORGOT PASSWORD */
-.forgot-password__form{
+.forgot-password__form {
     padding: 10rem 0;
 }
 
-.change-password__form{
+.change-password__form {
     padding: 10rem 0;
 }
 /* FORM */
@@ -169,10 +169,10 @@ body {
     font-family: "Onest", sans-serif;
 }
 
-.login-form__forgot{
+.login-form__forgot {
     color: var(--clr-flat-white-opacity);
 }
 
-.login-form__forgot:hover{
+.login-form__forgot:hover {
     color: var(--clr-flat-white);
 }
